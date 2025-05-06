@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>E-commerce Product Listing</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Hide cards by default if needed (not mandatory) */
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="#">ShopEase</a>
+    </div>
+  </nav>
+
+  <!-- Category Filter -->
+  <div class="container my-4">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Our Products</h2>
+
+      <div class="dropdown">
+        <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Filter by Category
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#" onclick="filterProducts('All')">All</a></li>
+          <li><a class="dropdown-item" href="#" onclick="filterProducts('Electronics')">Electronics</a></li>
+          <li><a class="dropdown-item" href="#" onclick="filterProducts('Fashion')">Fashion</a></li>
+          <li><a class="dropdown-item" href="#" onclick="filterProducts('Home Appliances')">Home Appliances</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Grid -->
+  <div class="container">
+    <div class="row g-4" id="product-list">
+
+      <!-- Product Card 1 -->
+      <div class="col-md-4 col-sm-6 product-card" data-category="Electronics">
+        <div class="card h-100">
+          <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Wireless Headphones">
+          <div class="card-body">
+            <h5 class="card-title">Wireless Headphones</h5>
+            <p class="card-text">Noise-cancelling over-ear headphones.</p>
+            <p class="card-text fw-bold">₹7,999</p>
+            <button class="btn btn-primary buy-btn">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 2 -->
+      <div class="col-md-4 col-sm-6 product-card" data-category="Electronics">
+        <div class="card h-100">
+          <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Smartwatch">
+          <div class="card-body">
+            <h5 class="card-title">Smartwatch</h5>
+            <p class="card-text">Fitness tracking smartwatch.</p>
+            <p class="card-text fw-bold">₹12,999</p>
+            <button class="btn btn-primary buy-btn">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 3 -->
+      <div class="col-md-4 col-sm-6 product-card" data-category="Electronics">
+        <div class="card h-100">
+          <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Gaming Mouse">
+          <div class="card-body">
+            <h5 class="card-title">Gaming Mouse</h5>
+            <p class="card-text">Ergonomic gaming mouse for precision control.</p>
+            <p class="card-text fw-bold">₹2,499</p>
+            <button class="btn btn-primary buy-btn">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 4 -->
+      <div class="col-md-4 col-sm-6 product-card" data-category="Home Appliances">
+        <div class="card h-100">
+          <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Laptop Stand">
+          <div class="card-body">
+            <h5 class="card-title">Laptop Stand</h5>
+            <p class="card-text">Adjustable aluminum stand for laptops.</p>
+            <p class="card-text fw-bold">₹1,999</p>
+            <button class="btn btn-primary buy-btn">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- More products can be added with different categories -->
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white text-center py-3 mt-5">
+    © 2025 ShopEase. All Rights Reserved.
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JS -->
+  <script>
+    // Function to filter products by category
+    function filterProducts(category) {
+      const products = document.querySelectorAll('.product-card');
+      products.forEach(product => {
+        if (category === 'All' || product.getAttribute('data-category') === category) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    }
+
+    // Function for Buy Now button
+    const buyButtons = document.querySelectorAll('.buy-btn');
+    buyButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        alert('Thank you for buying from ShopEase!');
+      });
+    });
+    
+    
+  </script>
+
+</body>
+</html>

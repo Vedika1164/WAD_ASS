@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Directory</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>Employee Directory</h1>
+  </header>
+
+  <main>
+    <div id="employeeList"></div>
+  </main>
+
+  <script>
+    // Fetch employee data from the API
+    fetch('/api/employees')
+      .then(res => res.json())
+      .then(data => {
+        const employeeList = document.getElementById('employeeList');
+        
+        data.forEach(employee => {
+          const employeeDiv = document.createElement('div');
+          employeeDiv.classList.add('employee');
+          
+          const img = document.createElement('img');
+          img.src = employee.image;  // Image source (ensure images are in the public folder)
+          img.alt = employee.name;
+
+          const name = document.createElement('h3');
+          name.textContent = employee.name;
+
+          const designation = document.createElement('p');
+          designation.textContent = `Designation: ${employee.designation}`;
+
+          const department = document.createElement('p');
+          department.textContent = `Department: ${employee.department}`;
+
+          const salary = document.createElement('p');
+          salary.textContent = `Salary: $${employee.salary}`;
+
+          // Append everything to the employeeDiv
+          employeeDiv.appendChild(img);
+          employeeDiv.appendChild(name);
+          employeeDiv.appendChild(designation);
+          employeeDiv.appendChild(department);
+          employeeDiv.appendChild(salary);
+
+          // Append employeeDiv to the list
+          employeeList.appendChild(employeeDiv);
+        });
+      })
+      .catch(err => console.error('Error loading employee data:', err));
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User List</title>
+</head>
+<body>
+  <h2>Registered Users</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Name</th><th>Email</th><th>Mobile</th><th>DOB</th><th>City</th><th>Address</th><th>Username</th>
+      </tr>
+    </thead>
+    <tbody id="userTable"></tbody>
+  </table>
+  <button onclick="logout()">Logout</button>
+
+  <script>
+    const loggedIn = localStorage.getItem('loggedInUser');
+    if (!loggedIn) {
+      alert("Login first!");
+      location.href = "11.2_login.html";
+    }
+
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const rows = users.map(u =>
+      `<tr><td>${u.name}</td><td>${u.email}</td><td>${u.mobile}</td><td>${u.dob}</td><td>${u.city}</td><td>${u.address}</td><td>${u.username}</td></tr>`
+    ).join('');
+    document.getElementById('userTable').innerHTML = rows;
+
+    function logout() {
+      localStorage.removeItem('loggedInUser');
+      location.href = "11.2_login.html";
+    }
+  </script>
+</body>
+</html>

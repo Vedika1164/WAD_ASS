@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Catalog</title>
+  <style>
+    .product {
+      border: 1px solid #ccc;
+      padding: 16px;
+      margin: 16px;
+      text-align: center;
+      width: 200px;
+    }
+    .product img {
+      max-width: 100%;
+      height: auto;
+    }
+    .product h3 {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Product Catalog</h1>
+  <div id="productList"></div>
+
+  <script>
+    fetch('/api/products')
+      .then(res => res.json())
+      .then(data => {
+        const productList = document.getElementById('productList');
+        data.forEach(product => {
+          const productDiv = document.createElement('div');
+          productDiv.classList.add('product');
+          
+          const img = document.createElement('img');
+          img.src = product.image;
+          img.alt = product.name;
+
+          const name = document.createElement('h3');
+          name.textContent = product.name;
+
+          const price = document.createElement('p');
+          price.textContent = `$${product.price.toFixed(2)}`;
+
+          productDiv.appendChild(img);
+          productDiv.appendChild(name);
+          productDiv.appendChild(price);
+
+          productList.appendChild(productDiv);
+        });
+      })
+      .catch(err => console.error('Error loading products:', err));
+  </script>
+
+</body>
+</html>

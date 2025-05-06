@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  header h1 {
+    margin: 0;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  .employee {
+    background-color: white;
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 8px;
+  }
+  
+  .employee img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+  
+  .employee h3 {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .employee p {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  
+  #employeeList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  

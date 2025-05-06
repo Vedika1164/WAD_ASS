@@ -1,0 +1,24 @@
+[
+    {
+      "name": "John Doe",
+      "designation": "Software Engineer",
+      "department": "Engineering",
+      "salary": 75000,
+      "image": "john_doe.jpg"
+    },
+    {
+      "name": "Jane Smith",
+      "designation": "Project Manager",
+      "department": "Management",
+      "salary": 95000,
+      "image": "jane_smith.jpg"
+    },
+    {
+      "name": "Bob Johnson",
+      "designation": "UI/UX Designer",
+      "department": "Design",
+      "salary": 68000,
+      "image": "bob_johnson.jpg"
+    }
+  ]
+  

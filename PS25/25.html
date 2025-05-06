@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>My Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- jQuery Mobile CSS -->
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <!-- jQuery and jQuery Mobile JS -->
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+
+<!-- Home Page -->
+<div data-role="page" id="home">
+  <div data-role="header" data-theme="b">
+    <h1>My Portfolio</h1>
+  </div>
+  <div data-role="content">
+    <ul data-role="listview">
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact Info</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- About Me Page -->
+<div data-role="page" id="about">
+  <div data-role="header" data-theme="b">
+    <h1>About Me</h1>
+    <a href="#home" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+  </div>
+  <div data-role="content">
+    <p>Hello! I'm Vedika Anand Thakur, a passionate B.E. IT student at PICT, Pune. I love working on AI/ML, real-world projects, and web development.</p>
+  </div>
+</div>
+
+<!-- Projects Page -->
+<div data-role="page" id="projects">
+  <div data-role="header" data-theme="b">
+    <h1>Projects</h1>
+    <a href="#home" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+  </div> 
+  <div data-role="content">
+    <ul>
+      <li><b>Resume Matcher:</b> AI tool to match resumes with job descriptions</li>
+      <li><b>Car Price Predictor:</b> ML model for predicting car prices</li>
+      <li><b>Food Nutrition Detector:</b> Detect Indian dishes & estimate calories</li>
+    </ul>
+  </div>
+</div> 
+
+<!-- Skills Page -->
+<div data-role="page" id="skills">
+  <div data-role="header" data-theme="b">
+    <h1>Skills</h1>
+    <a href="#home" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+  </div>
+  <div data-role="content">
+    <ul>
+      <li>Python, C++, HTML, CSS, JavaScript</li>
+      <li>Machine Learning, AI, Data Analysis</li>
+      <li>MySQL, MongoDB, Node.js, Express.js</li>
+      <li>Bootstrap, jQuery, jQuery Mobile</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Contact Info Page -->
+<div data-role="page" id="contact">
+  <div data-role="header" data-theme="b">
+    <h1>Contact Info</h1>
+    <a href="#home" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+  </div>
+  <div data-role="content">
+    <p><b>Name:</b> Vedika Anand Thakur</p>
+    <p><b>Email:</b> vedikat351@gmail.com</p>
+    <p><b>Location:</b> Pune, Maharashtra, India</p>
+  </div>
+</div>
+
+</body>
+</html>

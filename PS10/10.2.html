@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple To-Do List (XML)</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h3>To-Do List</h3>
+  <input id="task" type="text" placeholder="Enter task">
+  <button onclick="addTask()">Add</button>
+  <ul id="list"></ul>
+
+  <script>
+    function loadTasks() {
+      $.get("10.2.php", function (data) {
+        $('#list').empty();
+        $(data).find('item').each(function (i) {
+          const text = $(this).text();
+          $('#list').append(`<li>${text} <button onclick="delTask(${i})">Delete</button></li>`);
+        });
+      });
+    }
+
+    function addTask() {
+      const text = $('#task').val();
+      const xml = `<task><action>add</action><text>${text}</text></task>`;
+      $.post("10.2.php", { xml: xml }, loadTasks);
+      $('#task').val('');
+    }
+
+    function delTask(i) {
+      const xml = `<task><action>delete</action><index>${i}</index></task>`;
+      $.post("10.2.php", { xml: xml }, loadTasks);
+    }
+
+    $(loadTasks); // Load tasks on page load
+  </script>
+</body>
+</html>

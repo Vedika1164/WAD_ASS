@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple To-Do List (XML, No PHP)</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h3>To-Do List</h3>
+  <input id="task" type="text" placeholder="Enter task">
+  <button onclick="addTask()">Add</button>
+  <ul id="list"></ul>
+
+  <script>
+    function loadTasks() {
+      $('#list').empty();
+      const xmlString = localStorage.getItem('tasks') || "<tasks></tasks>";
+      const xml = $.parseXML(xmlString);
+      $(xml).find('item').each(function (i) {
+        const text = $(this).text();
+        $('#list').append(
+          `<li>${text} 
+            <button onclick="delTask(${i})">Delete</button>
+            <button onclick="editTask(${i})">Edit</button>
+          </li>`
+        );
+      });
+    }
+
+    function saveXML(xmlObj) {
+      const serializer = new XMLSerializer();
+      const xmlString = serializer.serializeToString(xmlObj);
+      localStorage.setItem('tasks', xmlString);
+    }
+
+    function addTask() {
+      const taskText = $('#task').val();
+      if (!taskText) return;
+      const xmlString = localStorage.getItem('tasks') || "<tasks></tasks>";
+      const xml = $.parseXML(xmlString);
+      const $xml = $(xml);
+      $xml.find('tasks').append(`<item>${taskText}</item>`);
+      saveXML(xml);
+      $('#task').val('');
+      loadTasks();
+    }
+
+    function delTask(index) {
+      const xmlString = localStorage.getItem('tasks') || "<tasks></tasks>";
+      const xml = $.parseXML(xmlString);
+      const $items = $(xml).find('item');
+      $items.eq(index).remove();
+      saveXML(xml);
+      loadTasks();
+    }
+
+    function editTask(index) {
+      const newText = prompt("Update task:");
+      if (newText) {
+        const xmlString = localStorage.getItem('tasks') || "<tasks></tasks>";
+        const xml = $.parseXML(xmlString);
+        $(xml).find('item').eq(index).text(newText);
+        saveXML(xml);
+        loadTasks();
+      }
+    }
+
+    $(loadTasks);
+  </script>
+</body>
+</html>
